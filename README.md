@@ -41,6 +41,7 @@ python3 virtue-example.py
 ---
 
 ## Folder Structure
+```
 .
 ├── virtue (this repo)
 │   ├── assets
@@ -89,6 +90,7 @@ python3 virtue-example.py
 │       ├── SCAR_RefCOCOg.parquet
 │       ├── SCAR_RefCOCO_plus.parquet
 │       └── SCAR_VisualGenome.parquet
+```
 ---
 
 ## Environment Setup
