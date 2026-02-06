@@ -95,11 +95,6 @@ python3 convert_hf_model.py
 python3 HF_model_conversion/load_hf_model.py
 ```
 
-## Experimental Results
-### MMEB
-
-### SCaR
-
 ## Some Known Issues
 - According to the authors of VLM2Vec_v2, the trainig codebase cannot naturally work for single-GPU, which will cause errors for GradCache.
 
