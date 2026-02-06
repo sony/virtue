@@ -30,6 +30,67 @@ VIRTUE consistently achieves a state-of-the-art performance with significant imp
 
 ![Framework](./assets/teaser.png)
 
+---
+
+## How to Use VIRTUE
+Please refer to the [example code](https://github.com/sony/virtue/blob/master/codes/virtue-example.py).
+```
+python3 virtue-example.py
+```
+
+---
+
+## Folder Structure
+.
+├── virtue (this repo)
+│   ├── assets
+│   │   ├── example.jpg
+│   │   └── teaser.png
+│   ├── codes
+│   │   ├── configs
+│   │   ├── demo.py
+│   │   ├── eval.py
+│   │   ├── HF_model_conversion
+│   │   ├── requirements.txt
+│   │   ├── sam2_checkpoints
+│   │   ├── scripts
+│   │   ├── src
+│   │   ├── train.py
+│   │   └── virtue-example.py
+│   ├── docker
+│   │   └── virtue-env.Dockerfile
+│   ├── docs
+│   │   ├── index.html
+│   │   └── static
+│   └── README.md
+├── data
+│   ├── MMEB-train
+│   ├── SCaR-eval
+│   │   ├── images
+│   │   │   ├── ade20k_val
+│   │   │   ├── coco_stuff_val
+│   │   │   ├── refcocog_val
+│   │   │   ├── refcoco_plus_val
+│   │   │   └── visualgenome_val
+│   │   ├── SCaR_eval_ADE20K.parquet
+│   │   ├── SCaR_eval_COCO_Stuff.parquet
+│   │   ├── SCaR_eval_RefCOCOg.parquet
+│   │   ├── SCaR_eval_RefCOCO_plus.parquet
+│   │   └── SCaR_eval_VisualGenome.parquet
+│   └── SCaR-train
+│       ├── images
+│       │   ├── ade20k_train
+│       │   ├── coco_stuff_train
+│       │   ├── refcocog_train
+│       │   ├── refcoco_plus_train
+│       │   └── visualgenome_train
+│       ├── SCAR_ADE20K.parquet
+│       ├── SCAR_COCO_Stuff.parquet
+│       ├── SCAR_RefCOCOg.parquet
+│       ├── SCAR_RefCOCO_plus.parquet
+│       └── SCAR_VisualGenome.parquet
+---
+
 ## Environment Setup
 The environment is set with Python3.11.
 ```
@@ -42,9 +103,6 @@ pip install -e .		                % clone SAM2 and execute inside SAM2
 ```
 
 We also provide the dockerfile under `docker/`.
-
-## How to Use VIRTUE
-Please refer to the [example code](https://github.com/sony/virtue/blob/master/codes/HF_model_conversion/load_hf_model_example.py).
 
 ## Data Preparation
 ### MMEB
