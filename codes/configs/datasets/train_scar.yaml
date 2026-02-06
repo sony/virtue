@@ -1,0 +1,40 @@
+SCAR_RefCOCO_plus:
+    dataset_parser: scar
+    dataset_name: "../../data/SCaR-train"
+    subset_name: SCAR_RefCOCO_plus
+    dataset_split: original
+    image_dir: "../../data/SCaR-train/images"
+    num_sample_per_subset: 100000
+    weight: 1
+SCAR_RefCOCOg:
+    dataset_parser: scar
+    dataset_name: "../../data/SCaR-train"
+    subset_name: SCAR_RefCOCOg
+    dataset_split: original
+    image_dir: "../../data/SCaR-train/images"
+    num_sample_per_subset: 100000
+    weight: 1
+SCAR_ADE20K:
+    dataset_parser: scar
+    dataset_name: "../../data/SCaR-train"
+    subset_name: SCAR_ADE20K
+    dataset_split: original
+    image_dir: "../../data/SCaR-train/images"
+    num_sample_per_subset: 100000
+    weight: 1
+SCAR_VisualGenome:
+    dataset_parser: scar
+    dataset_name: "../../data/SCaR-train"
+    subset_name: SCAR_VisualGenome
+    dataset_split: original
+    image_dir: "../../data/SCaR-train/images"
+    num_sample_per_subset: 100000
+    weight: 1
+SCAR_COCO_Stuff:
+    dataset_parser: scar
+    dataset_name: "../../data/SCaR-train"
+    subset_name: SCAR_COCO_Stuff
+    dataset_split: original
+    image_dir: "../../data/SCaR-train/images"
+    num_sample_per_subset: 100000
+    weight: 1

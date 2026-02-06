@@ -1,0 +1,28 @@
+# ───────────────────────────────────────────────────────────────────────────
+# 1. ModelArguments (matches ModelArguments)
+# ───────────────────────────────────────────────────────────────────────────
+model_name: "Sony/VIRTUE-2B-SCaR"   # TIGER-Lab/VLM2Vec-Qwen2VL-2B
+model_backbone: "qwen2_vl"
+# checkpoint_path: "./checkpoint-1000"
+pooling: "eos"
+normalize: true
+resize_use_processor: false
+image_resolution: "high"
+
+lora: false
+lora_r: 8
+sam: true
+sam_config: 
+  config_path: "./sam2.1/sam2.1_hiera_b+.yaml"
+  checkpoint: "./sam2_checkpoints/sam2.1_hiera_base_plus.pt"
+  feature_levels: 2
+  # AutomaticMaskGenerator
+  points_per_side: 3
+
+# ───────────────────────────────────────────────────────────────────────────
+# 2. DataArguments (matches DataArguments)
+# ───────────────────────────────────────────────────────────────────────────
+per_device_eval_batch_size: 16
+dataset_config: "./configs/datasets/eval_mmeb.yaml"
+encode_output_path: "generation_outputs/VIRTUE-2B-FT-SCAR-HF"
+data_basedir: "../../data/MMEB-V2"

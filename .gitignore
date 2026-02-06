@@ -1,0 +1,31 @@
+output/
+outputs/
+models/
+__pycache__/
+
+*.env
+*.json*
+*.pt
+*.bin
+*.pth
+*.safetensors
+*.tfevents.*
+*.sif
+*.png
+*.pkl
+*.p
+*copy.py
+
+# evaluation output files
+*qry
+*tgt
+*.txt
+*.pyc
+
+# ignore official experiment-related scripts
+experiments/
+
+# tentatively ignored
+data_collections/
+demo_metadata/
+generation_outputs/

@@ -1,0 +1,63 @@
+# ───────────────────────────────────────────────────────────────────────────
+# 1. ModelArguments (matches ModelArguments)
+# ───────────────────────────────────────────────────────────────────────────
+model_name: "Qwen/Qwen2-VL-2B-Instruct"
+model_backbone: null
+processor_name: null
+model_type: null
+checkpoint_path: null
+pooling: "eos"
+normalize: true
+temperature: 0.02
+dataloader_num_workers: 8
+dataset_config: "./configs/datasets/train_scar.yaml"
+# resize_use_processor: false
+# image_resolution: "high"
+
+lora: true
+lora_r: 8
+lora_alpha: 64
+lora_dropout: 0.1
+lora_target_modules: "qkv_proj,o_proj,gate_up_proj,down_proj,k_proj,q_proj,out_proj,v_proj"
+
+sam: true
+sam_config: 
+  config_path: "./sam2.1/sam2.1_hiera_b+.yaml"
+  checkpoint: "./sam2_checkpoints/sam2.1_hiera_base_plus.pt"
+  feature_levels: 2
+  # AutomaticMaskGenerator
+  points_per_side: 3
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 2. DataArguments (matches DataArguments)
+# ───────────────────────────────────────────────────────────────────────────
+interleave_batch_size: 64
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 3. TrainingArguments (matches TrainingArguments + HF defaults)
+# ───────────────────────────────────────────────────────────────────────────
+output_dir: "test_run"
+logging_steps: 5
+save_safetensors: false
+save_strategy: steps
+num_train_epochs: 1
+grad_cache: true
+
+gc_q_chunk_size: 2
+gc_p_chunk_size: 2
+
+# ─────────── HF‐inherited TrainingArguments fields ──────────────────────
+report_to: "tensorboard"
+lr_scheduler_type: "linear"
+learning_rate: 2e-5
+max_steps: 2000
+warmup_steps: 200
+save_steps: 5
+per_device_train_batch_size: 32
+bf16: true
+remove_unused_columns: false
+
+# place null if not using
+resume_from: "none"

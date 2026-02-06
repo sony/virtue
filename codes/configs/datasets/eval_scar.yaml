@@ -1,0 +1,30 @@
+SCAR_RefCOCO_plus_val:
+    dataset_parser: scar_i2t
+    dataset_name: SCAR_RefCOCO_plus_val_filtered
+    dataset_split: test
+    image_root: image-tasks/MMEB/SCAR/
+    eval_type: local
+SCAR_RefCOCOg_val:
+    dataset_parser: scar_i2t
+    dataset_name: SCAR_RefCOCOg_val_filtered
+    dataset_split: test
+    image_root: image-tasks/MMEB/SCAR/
+    eval_type: local
+SCAR_ADE20K_val:
+    dataset_parser: scar_i2t
+    dataset_name: SCAR_ADE20K_val_filtered
+    dataset_split: test
+    image_root: image-tasks/MMEB/SCAR/
+    eval_type: local
+SCAR_VisualGenome_val:
+    dataset_parser: scar_i2t
+    dataset_name: SCAR_VisualGenome_val_filtered
+    dataset_split: test
+    image_root: image-tasks/MMEB/SCAR/
+    eval_type: local
+SCAR_COCO_Stuff_val:
+    dataset_parser: scar_i2t
+    dataset_name: SCAR_COCO_Stuff_val_filtered
+    dataset_split: test
+    image_root: image-tasks/MMEB/SCAR/
+    eval_type: local

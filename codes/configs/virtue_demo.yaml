@@ -1,0 +1,27 @@
+# ───────────────────────────────────────────────────────────────────────────
+# 1. ModelArguments (matches ModelArguments)
+# ───────────────────────────────────────────────────────────────────────────
+model_name: "VIRTUE-7B-FT-SCAR"   # TIGER-Lab/VLM2Vec-Qwen2VL-2B
+model_backbone: "qwen2_vl"
+# checkpoint_path: "./models/VIRTUE-7B-FT-SCAR/checkpoint-1000"
+pooling: "eos"
+normalize: true
+resize_use_processor: false
+image_resolution: "high"
+
+lora: true
+sam: true
+sam_config: 
+  config_path: "./sam2.1/sam2.1_hiera_b+.yaml"
+  checkpoint: "./sam2_checkpoints/sam2.1_hiera_base_plus.pt"
+  feature_levels: 2
+  # AutomaticMaskGenerator
+  points_per_side: 3
+
+# ───────────────────────────────────────────────────────────────────────────
+# 2. DataArguments (matches DataArguments)
+# ───────────────────────────────────────────────────────────────────────────
+per_device_eval_batch_size: 16
+dataset_config: "./configs/datasets/eval_image.yaml"
+encode_output_path: "generation_outputs/VIRTUE-7B-FT-SCAR"
+data_basedir: "./data/MMEB-V2"
