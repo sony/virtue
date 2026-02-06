@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="VIRTUE: Visual-Interactive Text-Image Universal Embedder - Wei-Yao Wang, Kazuya Tateishi, Qiyu Wu, Shusuke Takahashi, Yuki Mitsufuji">
+  <meta name="description" content="We propose VIRTUE, a visual-interactive text-image universal embedder consisting of a VLM and a segmentation model to enable the visual interaction modality for human interactions.">
+  <meta name="keywords" content="Visual-interactive embedding model, VLM-based representation learning, interactive image-to-text retrieval benchmark">
+  <meta name="author" content="Wei-Yao Wang, Kazuya Tateishi, Qiyu Wu, Shusuke Takahashi, Yuki Mitsufuji">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sony Group Corporation, Sony AI">
+  <meta property="og:title" content="VIRTUE: Visual-Interactive Text-Image Universal Embedder">
+  <meta property="og:description" content="We propose VIRTUE, a visual-interactive text-image universal embedder consisting of a VLM and a segmentation model to enable the visual interaction modality for human interactions.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://sony.github.io/virtue/">
+  <meta property="og:image" content="https://sony.github.io/virtue/static/images/teaser.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="VIRTUE: Visual-Interactive Text-Image Universal Embedder - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="Wei-Yao Wang, Kazuya Tateishi, Qiyu Wu, Shusuke Takahashi, Yuki Mitsufuji">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="Visual-interactive embedding model">
+  <meta property="article:tag" content="VLM-based representation learning">
+  <meta property="article:tag" content="Interactive image-to-text retrieval benchmark">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <meta name="twitter:title" content="VIRTUE: Visual-Interactive Text-Image Universal Embedder">
+  <meta name="twitter:description" content="We propose VIRTUE, a visual-interactive text-image universal embedder consisting of a VLM and a segmentation model to enable the visual interaction modality for human interactions.">
+  <meta name="twitter:image" content="https://sony.github.io/virtue/static/images/teaser.png">
+  <meta name="twitter:image:alt" content="VIRTUE: Visual-Interactive Text-Image Universal Embedder - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="VIRTUE: Visual-Interactive Text-Image Universal Embedder">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="ICLR 2026">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>VIRTUE: Visual-Interactive Text-Image Universal Embedder</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "VIRTUE: Visual-Interactive Text-Image Universal Embedder",
+    "description": "We propose VIRTUE, a visual-interactive text-image universal embedder consisting of a VLM and a segmentation model to enable the visual interaction modality for human interactions.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Wei-Yao Wang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sony Group Corporation"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Kazuya Tateishi",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sony Group Corporation"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Qiyu Wu",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sony Group Corporation"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Shusuke Takahashi",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sony Group Corporation"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Yuki Mitsufuji",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sony Group Corporation, Sony AI"
+        }
+      }
+    ],
+    "datePublished": "2026-02-05",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ICLR 2026"
+    },
+    "url": "https://sony.github.io/virtue/",
+    "image": "https://sony.github.io/virtue/static/images/teaser.png",
+    "keywords": ["Visual-interactive embedding model", "VLM-based representation learning", "Interactive image-to-text retrieval benchmark"],
+    "abstract": "We propose VIRTUE, a visual-interactive text-image universal embedder consisting of a VLM and a segmentation model to enable the visual interaction modality for human interactions.",
+    "citation": "@article{wangICLR2026virtue,
+      author       = {Wei-Yao Wang and
+                      Kazuya Tateishi and
+                      Qiyu Wu and
+                      Shusuke Takahashi and
+                      Yuki Mitsufuji},
+      title        = {VIRTUE: Visual-Interactive Text-Image Universal Embedder},
+      journal      = {arXiv preprint arXiv:2510.00523},
+      year         = {2025}
+    }",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://sony.github.io/virtue/"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Visual-interactive embedding model"
+      },
+      {
+        "@type": "Thing", 
+        "name": "VLM-based representation learning"
+      },
+      {
+        "@type": "Thing",
+        "name": "Interactive image-to-text retrieval benchmark"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sony Group Corporation, Sony AI",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">VIRTUE: Visual-Interactive Text-Image Universal Embedder</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://wywywang.github.io" target="_blank"><sup>♠</sup>Wei-Yao Wang</a>,</span>
+                <span class="author-block">
+                  <a href="https://wywywang.github.io" target="_blank"><sup>♠</sup>Kazuya Tateishi</a>,</span>
+                  <span class="author-block">
+                    <a href="https://wywywang.github.io" target="_blank"><sup>♠</sup>Qiyu Wu</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://wywywang.github.io" target="_blank"><sup>♠</sup>Shusuke Takahashi</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://wywywang.github.io" target="_blank"><sup>♠♦</sup>Yuki Mitsufuji</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>♠</sup>Sony Group Corporation, <sup>♦</sup>Sony AI<br>ICLR 2026</span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2510.00523.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="https://huggingface.co/Sony/VIRTUE-7B-SCaR" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            🤗
+                          </span>
+                          <span>VIRTUE Models</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="https://huggingface.co/datasets/Sony/SCaR-Eval" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            🤗
+                          </span>
+                          <span>SCaR Benchmarks</span>
+                      </a>
+                    </span>
+
+                  <span class="link-block">
+                    <a href="https://github.com/sony/virtue" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2510.00523" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser image-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/teaser.png" alt="VIRTUE Teaser" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        VIRTUE supports different types of visual prompts (bounding boxes in this paradigm) to guide the retrieval of regions of interest while accounting for both entity-level details and global scene context.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser image -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Multimodal representation learning models have demonstrated successful operation across complex tasks, and the integration of vision-language models (VLMs) has further enabled embedding models with instruction-following capabilities. However, existing embedding models lack visual-interactive capabilities to specify regions of interest from users (e.g., point, bounding box, mask), which have been explored in generative models to broaden their human-interactive applicability. Equipping embedding models with visual interactions not only would unlock new applications with localized grounding of user intent, which remains unexplored, but also enable the models to learn entity-level information within images to complement their global representations for conventional embedding tasks. In this paper, we propose a novel Visual-InteRactive Text-Image Universal Embedder (VIRTUE) that extends the capabilities of the segmentation model and the vision-language model to the realm of representation learning. In VIRTUE, the segmentation model can process visual prompts that pinpoint specific regions within an image, thereby enabling the embedder to handle complex and ambiguous scenarios more precisely. To evaluate the visual-interaction ability of VIRTUE, we introduce a large-scale Segmentation-and-Scene Caption Retrieval (SCaR) benchmark comprising 1M samples that aims to retrieve the text caption by jointly considering the entity with a specific object and image scene. VIRTUE consistently achieves a state-of-the-art performance with significant improvements across 36 universal MMEB (3.1%-8.5%) and five visual-interactive SCaR (15.2%-20.3%) tasks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h1 class="title is-1">VIRTUE Framework</h1>
+        <div class="content has-text-justified">
+          <p>
+            <span>Overview of VIRTUE. The framework trained with contrastive loss consists of a segmentation model, a segmentation-language connector (orange), and a VLM (blue). It supports arbitrary combinations of visual and textual inputs with an optional visual prompt. If no prompt is provided, the model samples $N$ points uniformly from the image to extract entity-level information.</span>
+            <br>
+            <img src="static/images/VIRTUE-framework.jpg" alt="VIRTUE Framework"/>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h1 class="title is-1">SCaR Benchmarks</h1>
+        <div class="content has-text-justified">
+          <p>
+            <span>The data collection pipeline to build SCaR. We adopt GPT-4V to generate missing elements for the ground-truth caption as well as negative candidates. 
+              Collected samples (left) are filtered via LLM-then-human inspection (right) to ensure quality. Each SCaR sample contains an image with a bounding box, one ground-truth caption, and nine distractors.</span>
+            <br>
+            <img src="static/images/SCaR-collection.jpg" alt="SCaR Collection"/>
+            <br><br>
+            <img src="static/images/SCaR-statistics.png" alt="SCaR Statistics"/>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h1 class="title is-1">MMEB Evaluation</h1>
+        <div class="content has-text-justified">
+          <p>
+            <span>Results on MMEB. The scores are averaged per meta-task. The \hlpink{improvements} are calculated between VIRTUE and the best-performing 2B and 7B baselines.</span>
+            <br>
+            <img src="static/images/MMEB-results.png" alt="MMEB Results"/>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h1 class="title is-1">SCaR Evaluation</h1>
+        <div class="content has-text-justified">
+          <p>
+            <span>Results on our proposed SCaR benchmark. All models incorporate bounding boxes in the textual prompt. +Cropping: Use only the cropped region of the image based on the given bounding box as input. +SCaR-train: Further finetune 1k steps with the SCaR training set.</span>
+            <br>
+            <img src="static/images/SCaR-results.png" alt="SCaR Results"/>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{wangICLR2026virtue,
+  author       = {Wei-Yao Wang and
+                  Kazuya Tateishi and
+                  Qiyu Wu and
+                  Shusuke Takahashi and
+                  Yuki Mitsufuji},
+  title        = {VIRTUE: Visual-Interactive Text-Image Universal Embedder},
+  journal      = {arXiv preprint arXiv:2510.00523},
+  year         = {2025}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
