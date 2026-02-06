@@ -44,7 +44,7 @@ pip install -e .		                % clone SAM2 and execute inside SAM2
 We also provide the dockerfile under `docker/`.
 
 ## How to Use VIRTUE
-Please refer to the [example code]().
+Please refer to the [example code](https://github.com/sony/virtue/blob/master/codes/HF_model_conversion/load_hf_model_example.py).
 
 ## Data Preparation
 ### MMEB
