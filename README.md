@@ -1,6 +1,6 @@
 # VIRTUE: Visual-Interactive Text-Image Universal Embedder (ICLR 2026)
 
-<a href="https://huggingface.co/Sony/xxx" target="_blank">
+<a href="https://sony.github.io/virtue" target="_blank">
     <img alt="Homepage" src="https://img.shields.io/badge/🌐_Website-Project_Page-003366?logoColor=003366" style="height:22pt"/>
 </a>
 <a href="https://arxiv.org/abs/2510.00523" target="_blank">
