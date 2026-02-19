@@ -9,8 +9,8 @@
 <a target="_blank" href="https://github.com/sony/virtue">
     <img style="height:22pt" src="https://img.shields.io/badge/-Code-green?style=flat&logo=github">
 </a>
-<a href="https://huggingface.co/Sony/VIRTUE-7B-SCaR" target="_blank">
-    <img alt="VIRTUE-7B-SCaR" src="https://img.shields.io/badge/%F0%9F%A4%97%20_Model-VIRTUE_Family-003366?color=ffc107&logoColor=white" style="height:22pt"/>
+<a href="https://huggingface.co/collections/Sony/virtue" target="_blank">
+    <img alt="VIRTUE-Model" src="https://img.shields.io/badge/%F0%9F%A4%97%20_Model-VIRTUE_Family-003366?color=ffc107&logoColor=white" style="height:22pt"/>
 </a>
 <a href="https://huggingface.co/datasets/Sony/SCaR-Eval" target="_blank">
     <img alt="SCaR Benchmark" src="https://img.shields.io/badge/%F0%9F%A4%97%20_Dataset-SCaR_Benchmarks-003366?color=ffc107&logoColor=white" style="height:22pt"/>
